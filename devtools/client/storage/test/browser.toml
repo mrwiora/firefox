@@ -66,6 +66,8 @@ tags = "usercontextid"
 
 ["browser_storage_cookies_add.js"]
 
+["browser_storage_cookies_add_tab.js"]
+
 ["browser_storage_cookies_delete_all.js"]
 
 ["browser_storage_cookies_domain.js"]
