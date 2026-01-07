@@ -15,18 +15,7 @@ add_task(async function () {
   showColumn("uniqueKey", false);
 
   info("Add a new cookie using the add button");
-  const toolbar = gPanelWindow.document.getElementById("storage-toolbar");
-  const menuAdd = toolbar.querySelector("#add-button");
-  
-  await selectTreeItem(["cookies", "http://test1.example.org"]);
-  
-  const eventEdit = gUI.table.once("row-edit");
-  const eventWait = gUI.once("store-objects-edit");
-  
-  menuAdd.click();
-  
-  const rowId = await eventEdit;
-  await eventWait;
+  const rowId = await performAdd(["cookies", "http://test1.example.org"]);
   
   info("Start editing the name field of the newly added cookie");
   await startCellEdit(rowId, "name");
