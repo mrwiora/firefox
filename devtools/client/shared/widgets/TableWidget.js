@@ -453,10 +453,14 @@ class TableWidget extends EventEmitter {
       });
     }
 
-    // Begin cell edit. We always do this so that we can begin editing even in
-    // the case that the previous edit will cause the row to move.
-    const cell = this.getEditedCellOnTab(event, column);
-    editor.edit(cell);
+    // Begin cell edit. We only do this immediately if there's no change pending.
+    // If there's a change pending, the row position may change due to sorting,
+    // so we rely on the ROW_EDIT listener above to handle editing the correct cell
+    // after the sort completes.
+    if (!editor.changePending) {
+      const cell = this.getEditedCellOnTab(event, column);
+      editor.edit(cell);
+    }
 
     // Prevent default input tabbing behaviour
     event.preventDefault();
