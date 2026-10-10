@@ -68,6 +68,8 @@ skip-if = [
 
 ["browser_storage_cookies_add.js"]
 
+["browser_storage_cookies_add_tab.js"]
+
 ["browser_storage_cookies_delete_all.js"]
 skip-if = [
   "os == 'mac' && os_version == '15.30' && arch == 'aarch64'", # Bug 1779172
